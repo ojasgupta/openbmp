@@ -249,21 +249,19 @@ void Config::parseBase(const YAML::Node &node) {
         }
     }
 	
-	if (node["heartbeat"]) {
-        if (node["heartbeat"]["interval"]) {
+	if (node["startup"]) {
+        if (node["startup"]["initial_router_time"]) {
             try {
-                heartbeat_interval = node["heartbeat"]["interval"].as<int>();
+                initial_router_time = node["startup"]["initial_router_time"].as<int>();
 
-                if (heartbeat_interval < 1 || heartbeat_interval > 1440)
-                    throw "invalid heartbeat interval not within range of 1 - 1440)";
-
-                heartbeat_interval *= 60;   // minutes to seconds
+                if (initial_router_time < 1 || initial_router_time > 1440)
+                    throw "invalid initial router time not within range of 1 - 1440)";
 
                 if (debug_general)
-                    std::cout << "   Config: heartbeat interval: " << heartbeat_interval << std::endl;
+                    std::cout << "   Config: Initial Router Time: " << initial_router_time << std::endl;
 
             } catch (YAML::TypedBadConversion<int> err) {
-                printWarning("heartbeat.router is not of type int", node["heartbeat"]["interval"]);
+                printWarning("initial_router_time is not of type int", node["startup"]["initial_router_time"]);
             }
         }
     }
