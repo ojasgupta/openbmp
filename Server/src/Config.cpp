@@ -49,6 +49,9 @@ Config::Config() {
     msg_send_max_retry  = 2;
     retry_backoff_ms    = 100;
     compression         = "snappy";
+    max_concurrent_routers = 2;
+    initial_router_time = 60;
+    calculate_baseline  = true;
 
     bzero(admin_id, sizeof(admin_id));
 
