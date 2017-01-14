@@ -262,20 +262,15 @@ void Config::parseBase(const YAML::Node &node) {
         }
 	
 	
-        if (node["heartbeat"]["interval"]) {
+        if (node["startup"]["calculate_baseline"]) {
             try {
-                heartbeat_interval = node["heartbeat"]["interval"].as<int>();
-
-                if (heartbeat_interval < 1 || heartbeat_interval > 1440)
-                    throw "invalid heartbeat interval not within range of 1 - 1440)";
-
-                heartbeat_interval *= 60;   // minutes to seconds
+                calculate_baseline = node["startup"]["calculate_baseline"].as<bool>();
 
                 if (debug_general)
-                    std::cout << "   Config: heartbeat interval: " << heartbeat_interval << std::endl;
+                    std::cout << "   Config: calculate_baseline: " << calculate_baseline << std::endl;
 
-            } catch (YAML::TypedBadConversion<int> err) {
-                printWarning("heartbeat.router is not of type int", node["heartbeat"]["interval"]);
+            } catch (YAML::TypedBadConversion<bool> err) {
+                printWarning("calculate_baseline is not of type int", node["startup"]["calculate_baseline"]);
             }
         }
     }
