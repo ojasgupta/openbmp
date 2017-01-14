@@ -231,20 +231,18 @@ void Config::parseBase(const YAML::Node &node) {
 
 	
     if (node["startup"]) {
-        if (node["heartbeat"]["interval"]) {
+        if (node["startup"]["max_concurrent_routers"]) {
             try {
-                heartbeat_interval = node["heartbeat"]["interval"].as<int>();
+                max_concurrent_routers = node["startup"]["max_concurrent_routers"].as<int>();
 
-                if (heartbeat_interval < 1 || heartbeat_interval > 1440)
-                    throw "invalid heartbeat interval not within range of 1 - 1440)";
-
-                heartbeat_interval *= 60;   // minutes to seconds
+                if (max_concurrent_routers < 1 || max_concurrent_routers > 1440)
+                    throw "invalid maximum concurrent routers not within range of 1 - 1440)";
 
                 if (debug_general)
-                    std::cout << "   Config: heartbeat interval: " << heartbeat_interval << std::endl;
+                    std::cout << "   Config: max concurrent routers: " << max_concurrent_routers << std::endl;
 
             } catch (YAML::TypedBadConversion<int> err) {
-                printWarning("heartbeat.router is not of type int", node["heartbeat"]["interval"]);
+                printWarning("max_concurrent_routers is not of type int", node["startup"]["max_concurrent_routers"]);
             }
         }
 	
@@ -252,7 +250,7 @@ void Config::parseBase(const YAML::Node &node) {
             try {
                 initial_router_time = node["startup"]["initial_router_time"].as<int>();
 
-                if (initial_router_time < 1 || initial_router_time > 1440)
+                if (initial_router_time < 1 || initial_router_time > 1440) //TO DO: input from Tim
                     throw "invalid initial router time not within range of 1 - 1440)";
 
                 if (debug_general)
