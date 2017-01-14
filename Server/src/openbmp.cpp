@@ -42,7 +42,7 @@ bool        run             = true;                 // Indicates if server shoul
 bool        run_foreground  = false;                // Indicates if server should run in forground
 
 
-#define MAX_THREADS 200
+//#define MAX_THREADS 200			    // Commenting MAX_THREADS so as to use max_concurrent_routers
 
 // Global thread list
 vector<ThreadMgmt *> thr_list(0);
