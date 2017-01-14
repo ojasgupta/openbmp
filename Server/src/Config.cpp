@@ -230,7 +230,7 @@ void Config::parseBase(const YAML::Node &node) {
     }
 
 	
-	if (node["heartbeat"]) {
+    if (node["startup"]) {
         if (node["heartbeat"]["interval"]) {
             try {
                 heartbeat_interval = node["heartbeat"]["interval"].as<int>();
@@ -247,9 +247,7 @@ void Config::parseBase(const YAML::Node &node) {
                 printWarning("heartbeat.router is not of type int", node["heartbeat"]["interval"]);
             }
         }
-    }
 	
-	if (node["startup"]) {
         if (node["startup"]["initial_router_time"]) {
             try {
                 initial_router_time = node["startup"]["initial_router_time"].as<int>();
@@ -264,10 +262,8 @@ void Config::parseBase(const YAML::Node &node) {
                 printWarning("initial_router_time is not of type int", node["startup"]["initial_router_time"]);
             }
         }
-    }
 	
 	
-	if (node["heartbeat"]) {
         if (node["heartbeat"]["interval"]) {
             try {
                 heartbeat_interval = node["heartbeat"]["interval"].as<int>();
