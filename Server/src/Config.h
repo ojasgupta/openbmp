@@ -42,7 +42,8 @@ public:
     bool        debug_bgp;
     bool        debug_bmp;
     bool        debug_msgbus;
-    bool        calculate_baseline;
+    bool        calculate_baseline;     ///<Indicates if router baseline time should be calculated
+    bool        pat_enabled;
     
     int         heartbeat_interval;      ///< Heartbeat interval in seconds for collector updates
     int   	tx_max_bytes;            ///< Maximum transmit message size
@@ -56,8 +57,7 @@ public:
     std::string compression;		 ///< Compression to use :none, gzip, snappy
     int         max_concurrent_routers;     ///<Maximum allowed routers that can connect
     int         initial_router_time;        ///<Initial time in allowing another concurrent router
-    bool        calculate_baseline;         ///<Indicates if router baseline time should be calculated
-
+   
     /**
      * matching structs and maps
      */
