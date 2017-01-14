@@ -229,6 +229,66 @@ void Config::parseBase(const YAML::Node &node) {
         }
     }
 
+	
+	if (node["heartbeat"]) {
+        if (node["heartbeat"]["interval"]) {
+            try {
+                heartbeat_interval = node["heartbeat"]["interval"].as<int>();
+
+                if (heartbeat_interval < 1 || heartbeat_interval > 1440)
+                    throw "invalid heartbeat interval not within range of 1 - 1440)";
+
+                heartbeat_interval *= 60;   // minutes to seconds
+
+                if (debug_general)
+                    std::cout << "   Config: heartbeat interval: " << heartbeat_interval << std::endl;
+
+            } catch (YAML::TypedBadConversion<int> err) {
+                printWarning("heartbeat.router is not of type int", node["heartbeat"]["interval"]);
+            }
+        }
+    }
+	
+	if (node["heartbeat"]) {
+        if (node["heartbeat"]["interval"]) {
+            try {
+                heartbeat_interval = node["heartbeat"]["interval"].as<int>();
+
+                if (heartbeat_interval < 1 || heartbeat_interval > 1440)
+                    throw "invalid heartbeat interval not within range of 1 - 1440)";
+
+                heartbeat_interval *= 60;   // minutes to seconds
+
+                if (debug_general)
+                    std::cout << "   Config: heartbeat interval: " << heartbeat_interval << std::endl;
+
+            } catch (YAML::TypedBadConversion<int> err) {
+                printWarning("heartbeat.router is not of type int", node["heartbeat"]["interval"]);
+            }
+        }
+    }
+	
+	
+	if (node["heartbeat"]) {
+        if (node["heartbeat"]["interval"]) {
+            try {
+                heartbeat_interval = node["heartbeat"]["interval"].as<int>();
+
+                if (heartbeat_interval < 1 || heartbeat_interval > 1440)
+                    throw "invalid heartbeat interval not within range of 1 - 1440)";
+
+                heartbeat_interval *= 60;   // minutes to seconds
+
+                if (debug_general)
+                    std::cout << "   Config: heartbeat interval: " << heartbeat_interval << std::endl;
+
+            } catch (YAML::TypedBadConversion<int> err) {
+                printWarning("heartbeat.router is not of type int", node["heartbeat"]["interval"]);
+            }
+        }
+    }
+
+
 }
 
 /**
