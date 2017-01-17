@@ -270,7 +270,7 @@ void Config::parseBase(const YAML::Node &node) {
                     std::cout << "   Config: calculate_baseline: " << calculate_baseline << std::endl;
 
             } catch (YAML::TypedBadConversion<bool> err) {
-                printWarning("calculate_baseline is not of type int", node["startup"]["calculate_baseline"]);
+                printWarning("calculate_baseline is not of type bool", node["startup"]["calculate_baseline"]);
             }
         }
     }
