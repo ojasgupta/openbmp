@@ -1,0 +1,10 @@
+/home/ojas/Downloads/clion-2016.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/ojas/openbmp
+-- Boost version: 1.58.0
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so (found suitable version "1.0.2g", minimum required is "1") 
+CMake Error at Server/CMakeLists.txt:71 (Message):
+  Librdkafka was not found, cannot proceed.  Visit
+  https://github.com/edenhill/librdkafka for details on how to install it.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/ojas/openbmp/cmake-build-debug/CMakeFiles/CMakeOutput.log".
